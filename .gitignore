@@ -1,0 +1,13 @@
+venv/*
+*.pyc
+app/django/es4c_manager/db.sqlite3
+app/django/es4c_manager/migrations/*
+app/django/es4c_manager/es4c_manager/migrations/*
+app/django/es4c_manager/es4c_manager/__pycache__/*
+app/django/es4c_manager/es4c_manager/main/__pycache__/*
+app/django/es4c_manager/main/migrations/*
+app/rabbitmq_data/*
+app/samba-config/*
+app/samba-data/*
+app/samba-logs/*
+app/.env
