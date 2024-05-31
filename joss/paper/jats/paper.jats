@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.2 20190208//EN"
+                  "JATS-publishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.2" article-type="other">
+<front>
+<journal-meta>
+<journal-id></journal-id>
+<journal-title-group>
+<journal-title>Journal of Open Source Software</journal-title>
+<abbrev-journal-title>JOSS</abbrev-journal-title>
+</journal-title-group>
+<issn publication-format="electronic">2475-9066</issn>
+<publisher>
+<publisher-name>Open Journals</publisher-name>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">0</article-id>
+<article-id pub-id-type="doi">N/A</article-id>
+<title-group>
+<article-title>ES4All — Simplifying SAMBA AD/DC Setup for Academic and
+Institutional Use</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<name>
+<surname>Santos</surname>
+<given-names>Diego Ascanio</given-names>
+</name>
+<xref ref-type="aff" rid="aff-1"/>
+</contrib>
+<contrib contrib-type="author">
+<name>
+<surname>Menezes</surname>
+<given-names>Gustavo Campos</given-names>
+</name>
+<xref ref-type="aff" rid="aff-1"/>
+</contrib>
+<contrib contrib-type="author">
+<name>
+<surname>Dalip</surname>
+<given-names>Daniel Hasan</given-names>
+</name>
+<xref ref-type="aff" rid="aff-1"/>
+</contrib>
+<contrib contrib-type="author">
+<name>
+<surname>Dias</surname>
+<given-names>Sandro Renato</given-names>
+</name>
+<xref ref-type="aff" rid="aff-1"/>
+</contrib>
+<contrib contrib-type="author">
+<name>
+<surname>Castanheira</surname>
+<given-names>Renato Stangherlin</given-names>
+</name>
+<xref ref-type="aff" rid="aff-1"/>
+</contrib>
+<contrib contrib-type="author">
+<name>
+<surname>de Deus</surname>
+<given-names>Alexandre Martins Gama</given-names>
+</name>
+<xref ref-type="aff" rid="aff-1"/>
+</contrib>
+<aff id="aff-1">
+<institution-wrap>
+<institution>Centro Federal de Educação Tecnológica de Minas Gerais,
+Brazil</institution>
+</institution-wrap>
+</aff>
+</contrib-group>
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-05-31">
+<day>31</day>
+<month>5</month>
+<year>2024</year>
+</pub-date>
+<volume>¿VOL?</volume>
+<issue>¿ISSUE?</issue>
+<fpage>¿PAGE?</fpage>
+<permissions>
+<copyright-statement>Authors of papers retain copyright and release the
+work under a Creative Commons Attribution 4.0 International License (CC
+BY 4.0)</copyright-statement>
+<copyright-year>2022</copyright-year>
+<copyright-holder>The article authors</copyright-holder>
+<license license-type="open-access" xlink:href="https://creativecommons.org/licenses/by/4.0/">
+<license-p>Authors of papers retain copyright and release the work under
+a Creative Commons Attribution 4.0 International License (CC BY
+4.0)</license-p>
+</license>
+</permissions>
+<kwd-group kwd-group-type="author">
+<kwd>Active Directory</kwd>
+<kwd>SAMBA</kwd>
+<kwd>User Management</kwd>
+<kwd>Docker</kwd>
+<kwd>System Administration</kwd>
+</kwd-group>
+</article-meta>
+</front>
+<body>
+<sec id="summary">
+  <title>Summary</title>
+  <p>The Easy SAMBA for All (ES4All) Platform addresses a significant
+  challenge in the deployment and management of SAMBA Active
+  Directory/Domain Controller (AD/DC) services: complexity. Traditional
+  setups of SAMBA, despite its robust features and stability, are often
+  hindered by intricate configuration processes that can deter IT staff,
+  particularly in environments with constrained resources or high
+  operational demands. ES4All leverages Docker container technology to
+  streamline these processes, offering a simplified, accessible, and
+  efficient approach to SAMBA server setup.</p>
+  <p>It also frees IT staff from the burden of manual user management by
+  providing a web interface for self-registration, enabling end-users to
+  easily join the network and access resources. This self-registration
+  feature enhances user experience, reduces administrative overhead, and
+  improves overall network security by ensuring only authorized users to
+  access computers managed by the SAMBA AD/DC server.</p>
+  <p>The Platform is particularly well suited for academic institutions
+  and organizations seeking cost-effective and easy-to-set-up
+  alternatives to proprietary AD/DC solutions. With ES4All,
+  organizations can harness the full potential of SAMBA AD/DC services,
+  improving network management and user isolation in a secure and
+  manageable manner.</p>
+</sec>
+<sec id="statement-of-need">
+  <title>Statement of Need</title>
+  <p>Misuse in computer labs can harm students’ rights to learn and
+  perform experiments in these spaces, so it is necessary to identify
+  each student who uses a lab computer to mitigate such threats.
+  Furthermore, there are cases where no intentional harm is produced,
+  i.e., when someone accidentally deletes a file on a computer that was
+  in use by another person, so besides identification, some level of
+  isolation between users is appreciated.</p>
+  <p>An Active Directory / Domain Controller service provides ways to
+  achieve these goals. However, the state-of-the-art software —
+  Microsoft Active Directory and Domain Controller from Microsoft
+  Corporation
+  (<xref alt="1999" rid="ref-microsoft_corporation_the_microsoft_1999" ref-type="bibr">1999</xref>)
+  — cannot be used in universities for several reasons such as:</p>
+  <p>Continuous budget cuts in public universities—Lima &amp; Iamamoto
+  (<xref alt="2020" rid="ref-lima_culture_2020" ref-type="bibr">2020</xref>),
+  Amigo
+  (<xref alt="2020" rid="ref-amigo_bill_2020" ref-type="bibr">2020</xref>),
+  and Altundemir
+  (<xref alt="2012" rid="ref-altundemir_impact_2012" ref-type="bibr">2012</xref>)—drain
+  money that, if available, could be used to acquire licenses for
+  Microsoft Windows Server OS (which bundles AD/DC service within
+  yourself). - United States Sanctions against some countries like Cuba,
+  Russia, Iran, North Korea, and others forbid American companies (and
+  individuals) from doing business in these countries, and this
+  prohibition applies to Microsoft Corporation as it is an American
+  Company, so Microsoft cannot provide its services within these places,
+  leaving these countries’ universities (and all other businesses)
+  excluded from access to Microsoft AD/DC software
+  (<xref alt="U. S Department of Treasury, 2022" rid="ref-us_department_of_treasury_sanctions_2022" ref-type="bibr">U.
+  S Department of Treasury, 2022</xref>). Severe fines caused by unfair
+  use of proprietary software (piracy) can permanently harm any business
+  that dares to, as it happened to the Brazilian private university
+  Candido Mendes, which had its campus put up for auction to provide
+  financial resources for the payment of a R$42 million fine to
+  Microsoft caused by pirate Windows 98 OS installations on Candido
+  Mendes’ computers
+  (<xref alt="Setti, 2016" rid="ref-setti_rennan_predio_2016" ref-type="bibr">Setti,
+  2016</xref>).</p>
+  <p>Therefore, free (and open source) software to provide AD/DC
+  services is necessary to address these issues, and for the current
+  state of affairs, there is one free and open source software capable
+  of doing so: SAMBA. Since 1991, SAMBA has been developed to promote
+  integration between Windows and Unix networks and, nowadays, can
+  function as a domain controller, providing the necessary means to
+  manage users and computers in a network
+  (<xref alt="Samba Team, 2024" rid="ref-samba_team_the_samba_2024" ref-type="bibr">Samba
+  Team, 2024</xref>).</p>
+  <p>Although SAMBA’s resiliency and stability in providing AD/DC
+  functionalities, its setup is somewhat complex, as Vazquez
+  (<xref alt="2019" rid="ref-vazquez_practical_2019" ref-type="bibr">2019</xref>)
+  notices. These eventual complexities restrain many IT staff from
+  implementing SAMBA in their organizations since they need to deal with
+  complex and labor-intensive tasks in their daily duties — Goldszmidt
+  &amp; Yemini
+  (<xref alt="1998" rid="ref-Goldszmidt1998Delegated" ref-type="bibr">1998</xref>)
+  — or maybe overwhelmed with high workloads as Prabaswari et al.
+  (<xref alt="2019" rid="ref-Prabaswari2019The" ref-type="bibr">2019</xref>)
+  observes.</p>
+  <p>To address such complexities and to provide a way to set up an
+  AD/DC SAMBA server easily, we present the Easy SAMBA for All (ES4All)
+  Platform, a free and opensource application that provides through the
+  advantages and conveniences offered by Docker
+  containers<xref ref-type="fn" rid="fn1">1</xref>:</p>
+  <list list-type="bullet">
+    <list-item>
+      <p>A web interface where users can self-register into the AD/DC
+      SAMBA server with e-mail domain verification (optional) to
+      restrict registration to users within the organization, leaving
+      outsiders unable to register themselves.</p>
+    </list-item>
+    <list-item>
+      <p>A container composition that abstracts the complexities of
+      getting a SAMBA AD/DC server up and running.</p>
+    </list-item>
+    <list-item>
+      <p>A setup-wizard web interface that guides the IT staff through
+      setting up the necessary parameters to deploy the SAMBA AD/DC
+      server in their organization.</p>
+    </list-item>
+  </list>
+</sec>
+<sec id="description">
+  <title>Description</title>
+  <p>Docker containers provide the foundation that makes ES4All
+  possible. The main services provided by the ES4All Platform — in its
+  current state — could be supplied by only three modules (each one
+  isolated within a container), as shown in the figure below:</p>
+  <fig>
+    <caption><p>ES4All Modules Architecture</p></caption>
+    <graphic mimetype="image" mime-subtype="svg+xml" xlink:href="https://raw.githubusercontent.com/DiegoAscanio/es4ps-containers/01755e279db158a75237a6797a682a44d5dd20bc/docs/img/es4ps-containers.drawio.svg" />
+  </fig>
+  <p>These three modules are described as follows:</p>
+  <list list-type="order">
+    <list-item>
+      <p><bold>Samba AD/DC worker</bold>: This module is responsible for
+      providing an AD/DC SAMBA server and a user modification interface
+      that allows other modules — such as the Web Interface — to manage
+      users in the network. This interface is made possible through
+      Celery, a distributed task queue that enables the execution of
+      asynchronous tasks (called by issuers) by one or multiple workers.
+      In this case, the Django Web Interface issues tasks to the Samba
+      AD/DC worker to manage users in the network.</p>
+    </list-item>
+    <list-item>
+      <p><bold>Django web interface</bold>: This module provides a web
+      interface where users can self-register into the AD/DC SAMBA
+      server. It was developed using Django to accelerate the
+      development process through the batteries available in the Django
+      framework, such as the ORM, the admin interface, the
+      authentication system, the template engine, and the Celery
+      integration to issue tasks to the Samba AD/DC worker.</p>
+    </list-item>
+    <list-item>
+      <p><bold>RabbitMQ server</bold>: This server is the backbone for
+      Celery as it provides an Advanced Message Queuing Protocol (AMQP)
+      that Celery uses to transit tasks as messages. Currently, tasks
+      issued by the Django Web Interface are sent to the RabbitMQ server
+      and then consumed by the Samba AD/DC worker.</p>
+    </list-item>
+  </list>
+  <p>Besides these three modules (that makes it necessary to run at
+  least three containers), there are two other containers necessary to
+  provide the ES4All Platform:</p>
+  <list list-type="order">
+    <list-item>
+      <p><bold>init-certificates</bold>: This container is responsible
+      for generating self-signed certificates to provide secure
+      connections between Celery issuers and workers to the RabbitMQ
+      server, as well; it is responsible for generating self-signed SSL
+      certificates to provide https connections between the Django Web
+      Interface and the users. Certificates are generated only once,
+      although the container checks every time it runs to see if the
+      certificates have already been generated. If not, it generates
+      them.</p>
+    </list-item>
+    <list-item>
+      <p><bold>reverse-proxy</bold>: This container, using Nginx,
+      provides a reverse proxy to the Django Web Interface to properly
+      manage https connections for users. It is responsible for loading
+      the self-signed SSL certificates generated by the
+      init-certificates container and redirecting incoming http requests
+      to https and subsequent requests to the Django Web Interface.</p>
+    </list-item>
+  </list>
+  <p>All these modules are orchestrated by Docker Compose, a tool that
+  allows the definition and running of multi-container Docker
+  applications through a YAML file called docker-compose.yaml, where all
+  services, dependencies, networks, and volumes (for data persistence)
+  are defined.</p>
+  <p>How does this composition work? It expects necessary environment
+  variables to be forwarded to the containers that need them, such as
+  the Samba Administrator Password (SERVER_ADMIN_PASSWORD) and the
+  RabbitMQ password (RABBITMQ_DEFAULT_PASS). These variables are defined
+  in a .env file that needs to be loaded before running the proper
+  docker-compose command to start the ES4All Platform. So, any IT staff
+  who wants to deploy the ES4All Platform in their organization would
+  need to create this .env file and load it before running the
+  docker-compose command.</p>
+  <p>Fortunately, the ES4All Platform provides a
+  <ext-link ext-link-type="uri" xlink:href="https://diegoascanio.github.io/es4ps-setup-wizard">setup-wizard</ext-link>
+  web interface that guides the IT staff through the process of setting
+  up the necessary parameters to deploy the SAMBA AD/DC server in their
+  organization. This setup wizard is responsible for reading the
+  variables’ values from an HTML form (filled by IT staff) and writing
+  them into a .env file, which is appended into a zip file containing
+  the docker-compose.yaml file and the other containers’ configuration
+  files needed to run the ES4All Platform. Then, the IT staff downloads
+  and extracts this zip file into the server where the ES4All Platform
+  is set for deployment.</p>
+  <p>After performing these steps, all that an IT staff needs to do is
+  to build the container composition through the
+  <monospace>build.sh</monospace> script and then run the ES4All
+  Platform through the <monospace>run.sh</monospace> script. The ES4All
+  Platform will be up and running and: </p>
+  <list list-type="bullet">
+    <list-item>
+      <p>IT staff can access the Django Web Interface through the
+      browser to manage users, as shown in Figure 2;</p>
+    </list-item>
+    <list-item>
+      <p>Users can access the Django Web Interface through the browser
+      to self-register into the AD/DC SAMBA server, as shown in Figure
+      3.</p>
+    </list-item>
+  </list>
+  <p>There are documents explaining how to use the setup wizard and how
+  the ES4All Platform containers work. These are available,
+  correspondingly:</p>
+  <list list-type="order">
+    <list-item>
+      <p><ext-link ext-link-type="uri" xlink:href="https://github.com/DiegoAscanio/es4ps-setup-wizard/blob/main/README.md">ES4All
+      Setup Wizard Repository’s README</ext-link></p>
+    </list-item>
+    <list-item>
+      <p><ext-link ext-link-type="uri" xlink:href="https://github.com/DiegoAscanio/es4ps-containers/blob/main/README.md">ES4All
+      Containers Repository’s README</ext-link></p>
+    </list-item>
+  </list>
+  <p>There are also available in these documents, descriptions of the
+  steps taken to develop each of them, and such descriptions are useful
+  for:</p>
+  <list list-type="bullet">
+    <list-item>
+      <p>Understanding how the setup-wizard and the ES4All Platform
+      containers work;</p>
+    </list-item>
+    <list-item>
+      <p>Contributing to the development of these repositories.</p>
+    </list-item>
+  </list>
+  <p>Finally, there’s a proof of concept of the platform built through
+  Containers and Virtual Machines available at
+  <ext-link ext-link-type="uri" xlink:href="https://github.com/DiegoAscanio/es4all-proof-of-concept/">https://github.com/DiegoAscanio/es4all-proof-of-concept/</ext-link>
+  where you can see the ES4All Platform in action. For doing so you need
+  to enable intel (amd) virtualization support in your computer’s BIOS,
+  enable nested virtualization in your computer as well, and have at
+  least 8GB of RAM and 4 CPU cores available to the virtual
+  machines.</p>
+  <p>This proof-of-concept consists of a docker container that hosts
+  three virtual machines:</p>
+  <list list-type="order">
+    <list-item>
+      <p>A VM that runs the ES4All Platform;</p>
+    </list-item>
+    <list-item>
+      <p>A second with a Windows 10 Enterpirse Trial Edition VM that is
+      set up to join to the ES4All Platform’s domain;</p>
+    </list-item>
+    <list-item>
+      <p>A third one with a minimal Linux VM for users
+      self-registration.</p>
+    </list-item>
+  </list>
+  <p>The Windows VM is meant to demonstrate the user management
+  capabilities of the ES4All Platform and it is not distributed as a
+  ready OS installation. For being a trial edition that would expire
+  after 90 days of installation if the windows VM came already setup,
+  infringements of Microsoft intellectual property would happen after
+  this period.</p>
+  <p>For this reason, the Windows VM is distributed as an unattended
+  installation setup that installs Windows automatically so it’ll take
+  some time to install the OS.</p>
+  <fig>
+    <caption><p>ES4All Web Interface User Administration
+    Page</p></caption>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="./img/es4all-user-admin-page.png" />
+  </fig>
+  <fig>
+    <caption><p>ES4All Web Interface User Self Registration
+    Page</p></caption>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="./img/es4all-user-self-registration-page.png" />
+  </fig>
+</sec>
+<sec id="code-availability">
+  <title>Code Availability</title>
+  <p>The ES4All Platform is available in two repositories:</p>
+  <list list-type="order">
+    <list-item>
+      <p><ext-link ext-link-type="uri" xlink:href="https://github.com/DiegoAscanio/es4ps-containers/">ES4All
+      containers repository</ext-link>: This repository contains the
+      Dockerfiles and the docker-compose.yaml file necessary to build
+      and run the ES4All Platform.</p>
+    </list-item>
+    <list-item>
+      <p><ext-link ext-link-type="uri" xlink:href="https://github.com/DiegoAscanio/es4ps-setup-wizard">ES4All
+      setup-wizard repository</ext-link>: This repository contains the
+      source code of the setup-wizard web interface that guides the IT
+      staff through the process of setting up the necessary parameters
+      to deploy the SAMBA AD/DC server in their organization. It also
+      contains instructions on how to set up ES4All in an
+      organization.</p>
+    </list-item>
+  </list>
+</sec>
+<sec id="conclusion">
+  <title>Conclusion</title>
+  <p>The ES4All Platform allows IT staff to easily set up an AD/DC SAMBA
+  server in their organization, providing a web interface where users
+  can self-register into the AD/DC SAMBA server. This Platform is made
+  possible through the advantages and conveniences offered by Docker
+  containers, which abstract the complexities of getting a SAMBA AD/DC
+  server up and running.</p>
+  <p>The Platform represents a great benefit for all institutions that
+  need AD/DC services but are unable to use the Microsoft Active
+  Directory and Domain Controller software for any reason. A prime
+  example of the Platform’s usefulness is seen in academic environments,
+  where ES4All can identify end-users (students, teachers, researchers)
+  in computers and isolate such users from each other, mitigating
+  threats and accidental harms that might happen in a computer
+  network.</p>
+  <p>These features provide — with the absence of doubt — better
+  conditions for academic end-users to perform their activities
+  (learning, teaching, researching) in a computer network. Furthermore,
+  the simplification and automation (through user self-registration) of
+  the user management process in the network frees up IT staff to focus
+  on other critical functions, improving, as a result:</p>
+  <list list-type="order">
+    <list-item>
+      <p>The overall efficiency of the organization;</p>
+    </list-item>
+    <list-item>
+      <p>The productivity (and possibly job satisfaction) of the IT
+      staff;</p>
+    </list-item>
+    <list-item>
+      <p>The quality of the services provided by the organization to its
+      end-users.</p>
+    </list-item>
+  </list>
+</sec>
+<sec id="acknowledgements">
+  <title>Acknowledgements</title>
+  <p>We acknowledge the support of the IT and Computer Engineering
+  departments from Centro Federal de Educação Tecnológica de Minas
+  Gerais, Brazil, for providing the necessary resources to develop the
+  ES4All Platform.</p>
+</sec>
+</body>
+<back>
+<ref-list>
+  <ref id="ref-vazquez_practical_2019">
+    <element-citation publication-type="book">
+      <person-group person-group-type="author">
+        <name><surname>Vazquez</surname><given-names>Antonio</given-names></name>
+      </person-group>
+      <source>Practical LPIC-3 300: Prepare for the Highest Level Professional Linux Certification</source>
+      <publisher-name>Apress</publisher-name>
+      <year iso-8601-date="2019-06">2019</year><month>06</month>
+      <isbn>978-1-4842-4473-9</isbn>
+    </element-citation>
+  </ref>
+  <ref id="ref-microsoft_corporation_the_microsoft_1999">
+    <element-citation>
+      <person-group person-group-type="author">
+        <name><surname>Microsoft Corporation</surname><given-names>The</given-names></name>
+      </person-group>
+      <article-title>Microsoft Releases Windows 2000 to Manufacturing</article-title>
+      <source>Stories</source>
+      <year iso-8601-date="1999-12">1999</year><month>12</month>
+      <date-in-citation content-type="access-date"><year iso-8601-date="2024-05-12">2024</year><month>05</month><day>12</day></date-in-citation>
+      <uri>https://news.microsoft.com/1999/12/15/microsoft-releases-windows-2000-to-manufacturing/</uri>
+    </element-citation>
+  </ref>
+  <ref id="ref-lima_culture_2020">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Lima</surname><given-names>Valesca</given-names></name>
+        <name><surname>Iamamoto</surname><given-names>Sue</given-names></name>
+      </person-group>
+      <article-title>“Culture War” against Brazilian universities: How budget cuts and changes in tertiary education policies are affecting the academic community</article-title>
+      <source>Alternautas</source>
+      <year iso-8601-date="2020">2020</year>
+      <volume>7</volume>
+      <issue>2</issue>
+      <issn>2057-4924</issn>
+    </element-citation>
+  </ref>
+  <ref id="ref-amigo_bill_2020">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Amigo</surname><given-names>Ignacio</given-names></name>
+      </person-group>
+      <article-title>Bill threatens key Brazilian universities</article-title>
+      <year iso-8601-date="2020">2020</year>
+      <issn>0036-8075</issn>
+    </element-citation>
+  </ref>
+  <ref id="ref-altundemir_impact_2012">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Altundemir</surname><given-names>Mehmnet Emin</given-names></name>
+      </person-group>
+      <article-title>The impact of the financial crisis on American public universities</article-title>
+      <source>International Journal of Business and Social Science</source>
+      <year iso-8601-date="2012">2012</year>
+      <volume>3</volume>
+      <issue>8</issue>
+      <issn>2219-1933</issn>
+      <fpage>190</fpage>
+      <lpage>198</lpage>
+    </element-citation>
+  </ref>
+  <ref id="ref-us_department_of_treasury_sanctions_2022">
+    <element-citation>
+      <person-group person-group-type="author">
+        <name><surname>U. S Department of Treasury</surname><given-names>The</given-names></name>
+      </person-group>
+      <article-title>Sanctions Programs and Country Information  Office of Foreign Assets Control</article-title>
+      <year iso-8601-date="2022-02">2022</year><month>02</month>
+      <date-in-citation content-type="access-date"><year iso-8601-date="2024-05-10">2024</year><month>05</month><day>10</day></date-in-citation>
+      <uri>https://ofac.treasury.gov/sanctions-programs-and-country-information</uri>
+    </element-citation>
+  </ref>
+  <ref id="ref-setti_rennan_predio_2016">
+    <element-citation>
+      <person-group person-group-type="author">
+        <name><surname>Setti</surname><given-names>Rennan</given-names></name>
+      </person-group>
+      <article-title>Prédio da Candido Mendes em Ipanema vai a leilão por dívida</article-title>
+      <source>O Globo</source>
+      <year iso-8601-date="2016-12">2016</year><month>12</month>
+      <date-in-citation content-type="access-date"><year iso-8601-date="2024-05-10">2024</year><month>05</month><day>10</day></date-in-citation>
+      <uri>https://oglobo.globo.com/economia/predio-da-candido-mendes-em-ipanema-vai-leilao-por-divida-20589779</uri>
+    </element-citation>
+  </ref>
+  <ref id="ref-samba_team_the_samba_2024">
+    <element-citation>
+      <person-group person-group-type="author">
+        <name><surname>Samba Team</surname><given-names>The</given-names></name>
+      </person-group>
+      <article-title>Samba - opening windows to a wider world</article-title>
+      <year iso-8601-date="2024">2024</year>
+      <date-in-citation content-type="access-date"><year iso-8601-date="2024-05-10">2024</year><month>05</month><day>10</day></date-in-citation>
+      <uri>https://www.samba.org/</uri>
+    </element-citation>
+  </ref>
+  <ref id="ref-Goldszmidt1998Delegated">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Goldszmidt</surname><given-names>G.</given-names></name>
+        <name><surname>Yemini</surname><given-names>Y.</given-names></name>
+      </person-group>
+      <article-title>Delegated agents for network management</article-title>
+      <source>IEEE Commun. Mag.</source>
+      <year iso-8601-date="1998">1998</year>
+      <volume>36</volume>
+      <pub-id pub-id-type="doi">10.1109/35.663329</pub-id>
+      <fpage>66</fpage>
+      <lpage>70</lpage>
+    </element-citation>
+  </ref>
+  <ref id="ref-Prabaswari2019The">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Prabaswari</surname><given-names>A.</given-names></name>
+        <name><surname>Basumerda</surname><given-names>C.</given-names></name>
+        <name><surname>Utomo</surname><given-names>Bagus Wahyu</given-names></name>
+      </person-group>
+      <article-title>The mental workload analysis of staff in study program of private educational organization</article-title>
+      <source>IOP Conference Series: Materials Science and Engineering</source>
+      <year iso-8601-date="2019">2019</year>
+      <volume>528</volume>
+      <pub-id pub-id-type="doi">10.1088/1757-899X/528/1/012018</pub-id>
+    </element-citation>
+  </ref>
+  <ref id="ref-microsoft_corporation_implementing_2018">
+    <element-citation>
+      <person-group person-group-type="author">
+        <name><surname>Microsoft Corporation</surname><given-names>The</given-names></name>
+      </person-group>
+      <article-title>Implementing extensions in NAV Development Preview</article-title>
+      <year iso-8601-date="2018-12">2018</year><month>12</month>
+      <date-in-citation content-type="access-date"><year iso-8601-date="2024-05-12">2024</year><month>05</month><day>12</day></date-in-citation>
+      <uri>https://community.dynamics.com/blogs/post/?postid=50cde57a-9df1-4db0-a939-8089dd710e34</uri>
+    </element-citation>
+  </ref>
+  <ref id="ref-docker_inc_docker_2022">
+    <element-citation>
+      <person-group person-group-type="author">
+        <name><surname>Docker Inc.</surname><given-names>The</given-names></name>
+      </person-group>
+      <article-title>Docker: Accelerated Container Application Development</article-title>
+      <year iso-8601-date="2022-05">2022</year><month>05</month>
+      <date-in-citation content-type="access-date"><year iso-8601-date="2024-05-12">2024</year><month>05</month><day>12</day></date-in-citation>
+      <uri>https://www.docker.com/</uri>
+    </element-citation>
+  </ref>
+</ref-list>
+<fn-group>
+  <fn id="fn1">
+    <label>1</label><p>A container image is a lightweight, executable
+    package that includes everything needed to run the software: code,
+    runtime, tools, libraries, and settings. Compatible with Linux and
+    Windows, containers ensure consistent performance across
+    environments by isolating software. However, the Windows version may
+    lack some features that are available on Linux. Docker is a popular
+    Platform that simplifies the deployment and management of these
+    containers, facilitating scalability and reducing conflicts in
+    shared infrastructures.
+    (<xref alt="Docker Inc., 2022" rid="ref-docker_inc_docker_2022" ref-type="bibr">Docker
+    Inc., 2022</xref>;
+    <xref alt="Microsoft Corporation, 2018" rid="ref-microsoft_corporation_implementing_2018" ref-type="bibr">Microsoft
+    Corporation, 2018</xref>).</p>
+  </fn>
+</fn-group>
+</back>
+</article>

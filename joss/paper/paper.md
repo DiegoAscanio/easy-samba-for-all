@@ -37,7 +37,7 @@ bibliography: paper.bib
 
 The Easy SAMBA for All (ES4All) Platform addresses a significant challenge in the deployment and management of SAMBA Active Directory/Domain Controller (AD/DC) services: complexity. Traditional setups of SAMBA, despite its robust features and stability, are often hindered by intricate configuration processes that can deter IT staff, particularly in environments with constrained resources or high operational demands. ES4All leverages Docker container technology to streamline these processes, offering a simplified, accessible, and efficient approach to SAMBA server setup.
 
-It also frees IT staff from the burden of manual user management by providing a web interface for self-registration, enabling end-users to easily join the network and access resources. This self-registration feature enhances user experience, reduces administrative overhead, and improves overall network security by ensuring only authorized users can access the system.
+It also frees IT staff from the burden of manual user management by providing a web interface for self-registration, enabling end-users to easily join the network and access resources. This self-registration feature enhances user experience, reduces administrative overhead, and improves overall network security by ensuring only authorized users to access computers managed by the SAMBA AD/DC server.
 
 The Platform is particularly well suited for academic institutions and organizations seeking cost-effective and easy-to-set-up alternatives to proprietary AD/DC solutions. With ES4All, organizations can harness the full potential of SAMBA AD/DC services, improving network management and user isolation in a secure and manageable manner.
 
@@ -101,14 +101,28 @@ There are also available in these documents, descriptions of the steps taken to 
 - Understanding how the setup-wizard and the ES4All Platform containers work;
 - Contributing to the development of these repositories.
 
+Finally, there's a proof of concept of the platform built through Containers and Virtual Machines available at [https://github.com/DiegoAscanio/es4all-proof-of-concept/](https://github.com/DiegoAscanio/es4all-proof-of-concept/) where you can see the ES4All Platform in action. For doing so you need to enable intel (amd) virtualization support in your computer's BIOS, enable nested virtualization in your computer as well, and have at least 8GB of RAM and 4 CPU cores available to the virtual machines.
+
+This proof-of-concept consists of a docker container that hosts three virtual machines: 
+
+1. A VM that runs the ES4All Platform;
+2. A second with a Windows 10 Enterpirse Trial Edition VM that is set up to join to the ES4All Platform's domain;
+3. A third one with a minimal Linux VM for users self-registration.
+
+The Windows VM is meant to demonstrate the user management capabilities of the ES4All Platform and it is not distributed as a ready OS installation. For being a trial edition that would expire after 90 days of installation if the windows VM came already setup, infringements of Microsoft intellectual property would happen after this period.
+
+For this reason, the Windows VM is distributed as an unattended installation setup that installs Windows automatically so it'll take some time to install the OS.
+
 ![ES4All Web Interface User Administration Page](./img/es4all-user-admin-page.png)
 
 ![ES4All Web Interface User Self Registration Page](./img/es4all-user-self-registration-page.png)
 
-
 # Code Availability
 
-The ES4All Platform source codes and submodules are available at [https://github.com/diegoascanio/easy-samba-for-all](https://github.com/diegoascanio/easy-samba-for-all).
+The ES4All Platform is available in two repositories:
+
+1. [ES4All containers repository](https://github.com/DiegoAscanio/es4ps-containers/): This repository contains the Dockerfiles and the docker-compose.yaml file necessary to build and run the ES4All Platform.
+2. [ES4All setup-wizard repository](https://github.com/DiegoAscanio/es4ps-setup-wizard): This repository contains the source code of the setup-wizard web interface that guides the IT staff through the process of setting up the necessary parameters to deploy the SAMBA AD/DC server in their organization. It also contains instructions on how to set up ES4All in an organization.
 
 # Conclusion
 
