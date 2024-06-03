@@ -150,6 +150,20 @@ The ES4All Platform is available in two repositories besides this one:
 1. [ES4All containers repository](https://github.com/DiegoAscanio/es4ps-containers/): This repository contains the Dockerfiles and the docker-compose.yaml file necessary to build and run the ES4All Platform.
 2. [ES4All setup-wizard repository](https://github.com/DiegoAscanio/es4ps-setup-wizard): This repository contains the source code of the setup-wizard web interface that guides the IT staff through the process of setting up the necessary parameters to deploy the SAMBA AD/DC server in their organization. It also contains instructions on how to set up ES4All in an organization.
 
+## Proof of Concept
+
+There's a proof of concept of the platform built through Containers and Virtual Machines available at [https://github.com/DiegoAscanio/es4all-proof-of-concept/](https://github.com/DiegoAscanio/es4all-proof-of-concept/) where you can see the ES4All Platform in action. For doing so you need to enable intel (amd) virtualization support in your computer's BIOS, enable nested virtualization in your computer as well, and have at least 8GB of RAM and 4 CPU cores available to the virtual machines.
+
+This proof-of-concept consists of a docker container that hosts three virtual machines: 
+
+1. A VM that runs the ES4All Platform;
+2. A second with a Windows 10 Enterpirse Trial Edition VM that is set up to join to the ES4All Platform's domain;
+3. A third one with a minimal Linux VM for users self-registration.
+
+The Windows VM is meant to demonstrate the user management capabilities of the ES4All Platform and it is not distributed as a ready OS installation. For being a trial edition that would expire after 90 days of installation if the windows VM came already setup, infringements of Microsoft intellectual property would happen after this period.
+
+For this reason, the Windows VM is distributed as an unattended installation setup that installs Windows automatically so it'll take some time to install the OS.
+
 ## Final considerations
 
 The ES4All platform is a powerful tool that can help your organization to manage its users and computers in a clever way. This platform is under active development, and new features will be added in the future. 
