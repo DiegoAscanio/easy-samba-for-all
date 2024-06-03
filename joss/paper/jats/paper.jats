@@ -139,32 +139,43 @@ a Creative Commons Attribution 4.0 International License (CC BY
   Microsoft Active Directory and Domain Controller from Microsoft
   Corporation
   (<xref alt="1999" rid="ref-microsoft_corporation_the_microsoft_1999" ref-type="bibr">1999</xref>)
-  — cannot be used in universities for several reasons such as:</p>
-  <p>Continuous budget cuts in public universities—Lima &amp; Iamamoto
-  (<xref alt="2020" rid="ref-lima_culture_2020" ref-type="bibr">2020</xref>),
-  Amigo
-  (<xref alt="2020" rid="ref-amigo_bill_2020" ref-type="bibr">2020</xref>),
-  and Altundemir
-  (<xref alt="2012" rid="ref-altundemir_impact_2012" ref-type="bibr">2012</xref>)—drain
-  money that, if available, could be used to acquire licenses for
-  Microsoft Windows Server OS (which bundles AD/DC service within
-  yourself). - United States Sanctions against some countries like Cuba,
-  Russia, Iran, North Korea, and others forbid American companies (and
-  individuals) from doing business in these countries, and this
-  prohibition applies to Microsoft Corporation as it is an American
-  Company, so Microsoft cannot provide its services within these places,
-  leaving these countries’ universities (and all other businesses)
-  excluded from access to Microsoft AD/DC software
-  (<xref alt="U. S Department of Treasury, 2022" rid="ref-us_department_of_treasury_sanctions_2022" ref-type="bibr">U.
-  S Department of Treasury, 2022</xref>). Severe fines caused by unfair
-  use of proprietary software (piracy) can permanently harm any business
-  that dares to, as it happened to the Brazilian private university
-  Candido Mendes, which had its campus put up for auction to provide
-  financial resources for the payment of a R$42 million fine to
-  Microsoft caused by pirate Windows 98 OS installations on Candido
-  Mendes’ computers
-  (<xref alt="Setti, 2016" rid="ref-setti_rennan_predio_2016" ref-type="bibr">Setti,
-  2016</xref>).</p>
+  — cannot be used in universities (and similar organizations) for
+  several reasons such as:</p>
+  <list list-type="bullet">
+    <list-item>
+      <p>Continuous budget cuts in public universities—Lima &amp;
+      Iamamoto
+      (<xref alt="2020" rid="ref-lima_culture_2020" ref-type="bibr">2020</xref>),
+      Amigo
+      (<xref alt="2020" rid="ref-amigo_bill_2020" ref-type="bibr">2020</xref>),
+      and Altundemir
+      (<xref alt="2012" rid="ref-altundemir_impact_2012" ref-type="bibr">2012</xref>)—drain
+      money that, if available, could be used to acquire licenses for
+      Microsoft Windows Server OS (which bundles AD/DC service within
+      itself).</p>
+    </list-item>
+    <list-item>
+      <p>United States Sanctions against some countries like Cuba,
+      Russia, Iran, North Korea, and others forbid American companies
+      (and individuals) from doing business in these countries, and this
+      prohibition applies to Microsoft Corporation as it is an American
+      Company, so Microsoft cannot provide its services within these
+      places, leaving these countries’ universities (and all other
+      businesses) excluded from access to Microsoft AD/DC software
+      (<xref alt="U. S Department of Treasury, 2022" rid="ref-us_department_of_treasury_sanctions_2022" ref-type="bibr">U.
+      S Department of Treasury, 2022</xref>).</p>
+    </list-item>
+    <list-item>
+      <p>Severe fines caused by unfair use of proprietary software
+      (piracy) can permanently harm any business that dares to, as it
+      happened to the Brazilian private university Candido Mendes, which
+      had its campus put up for auction to provide financial resources
+      for the payment of a R$42 million fine to Microsoft caused by
+      pirate Windows 98 OS installations on Candido Mendes’ computers
+      (<xref alt="Setti, 2016" rid="ref-setti_rennan_predio_2016" ref-type="bibr">Setti,
+      2016</xref>).</p>
+    </list-item>
+  </list>
   <p>Therefore, free (and open source) software to provide AD/DC
   services is necessary to address these issues, and for the current
   state of affairs, there is one free and open source software capable
@@ -182,7 +193,7 @@ a Creative Commons Attribution 4.0 International License (CC BY
   complex and labor-intensive tasks in their daily duties — Goldszmidt
   &amp; Yemini
   (<xref alt="1998" rid="ref-Goldszmidt1998Delegated" ref-type="bibr">1998</xref>)
-  — or maybe overwhelmed with high workloads as Prabaswari et al.
+  — or might be overwhelmed with high workloads as Prabaswari et al.
   (<xref alt="2019" rid="ref-Prabaswari2019The" ref-type="bibr">2019</xref>)
   observes.</p>
   <p>To address such complexities and to provide a way to set up an
@@ -192,7 +203,7 @@ a Creative Commons Attribution 4.0 International License (CC BY
   containers<xref ref-type="fn" rid="fn1">1</xref>:</p>
   <list list-type="bullet">
     <list-item>
-      <p>A web interface where users can self-register into the AD/DC
+      <p>A web interface where users can self-register into an AD/DC
       SAMBA server with e-mail domain verification (optional) to
       restrict registration to users within the organization, leaving
       outsiders unable to register themselves.</p>
