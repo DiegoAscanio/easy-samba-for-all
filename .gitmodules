@@ -4,3 +4,6 @@
 [submodule "es4ps-setup-wizard"]
 	path = es4all-setup-wizard
 	url = git@github.com:DiegoAscanio/es4ps-setup-wizard
+[submodule "es4all-proof-of-concept"]
+	path = es4all-proof-of-concept
+	url = git@github.com:DiegoAscanio/es4all-proof-of-concept.git
