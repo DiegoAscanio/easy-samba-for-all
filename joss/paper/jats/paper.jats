@@ -23,6 +23,7 @@ Institutional Use</article-title>
 </title-group>
 <contrib-group>
 <contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">https://orcid.org/0009-0005-1589-657X</contrib-id>
 <name>
 <surname>Santos</surname>
 <given-names>Diego Ascanio</given-names>
@@ -30,6 +31,7 @@ Institutional Use</article-title>
 <xref ref-type="aff" rid="aff-1"/>
 </contrib>
 <contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">https://orcid.org/0000-0003-4544-9402</contrib-id>
 <name>
 <surname>Menezes</surname>
 <given-names>Gustavo Campos</given-names>
@@ -37,6 +39,7 @@ Institutional Use</article-title>
 <xref ref-type="aff" rid="aff-1"/>
 </contrib>
 <contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-8532-7701</contrib-id>
 <name>
 <surname>Dalip</surname>
 <given-names>Daniel Hasan</given-names>
@@ -44,6 +47,7 @@ Institutional Use</article-title>
 <xref ref-type="aff" rid="aff-1"/>
 </contrib>
 <contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">https://orcid.org/0000-0001-5288-5929</contrib-id>
 <name>
 <surname>Dias</surname>
 <given-names>Sandro Renato</given-names>
@@ -51,6 +55,7 @@ Institutional Use</article-title>
 <xref ref-type="aff" rid="aff-1"/>
 </contrib>
 <contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">https://orcid.org/0009-0001-3919-9331</contrib-id>
 <name>
 <surname>Castanheira</surname>
 <given-names>Renato Stangherlin</given-names>
@@ -58,9 +63,10 @@ Institutional Use</article-title>
 <xref ref-type="aff" rid="aff-1"/>
 </contrib>
 <contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-0229-7720</contrib-id>
 <name>
 <surname>de Deus</surname>
-<given-names>Alexandre Martins Gama</given-names>
+<given-names>Alexandre</given-names>
 </name>
 <xref ref-type="aff" rid="aff-1"/>
 </contrib>
@@ -304,14 +310,14 @@ a Creative Commons Attribution 4.0 International License (CC BY
   variables’ values from an HTML form (filled by IT staff) and writing
   them into a .env file, which is appended into a zip file containing
   the docker-compose.yaml file and the other containers’ configuration
-  files needed to run the ES4All Platform. Then, the IT staff downloads
-  and extracts this zip file into the server where the ES4All Platform
-  is set for deployment.</p>
+  files necessary to run the ES4All Platform. Then, the IT staff
+  downloads and extracts this zip file into the server where the ES4All
+  Platform is set for deployment.</p>
   <p>After performing these steps, all that an IT staff needs to do is
   to build the container composition through the
   <monospace>build.sh</monospace> script and then run the ES4All
   Platform through the <monospace>run.sh</monospace> script. The ES4All
-  Platform will be up and running and: </p>
+  Platform will be up, running and: </p>
   <list list-type="bullet">
     <list-item>
       <p>IT staff can access the Django Web Interface through the

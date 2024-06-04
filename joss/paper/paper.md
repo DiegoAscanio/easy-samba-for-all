@@ -8,22 +8,22 @@ tags:
     - System Administration
 authors:
     - name: Diego Ascanio Santos
-      orcid: 0000-0000-0000-0000
+      orcid: 0009-0005-1589-657X
       affiliation: 1
     - name: Gustavo Campos Menezes
-      orcid: 0000-0000-0000-0000
+      orcid: 0000-0003-4544-9402
       affiliation: 1
     - name: Daniel Hasan Dalip
-      orcid: 0000-0000-0000-0000
+      orcid: 0000-0002-8532-7701
       affiliation: 1
     - name: Sandro Renato Dias
-      orcid: 0000-0000-0000-0000
+      orcid: 0000-0001-5288-5929
       affiliation: 1
     - name: Renato Stangherlin Castanheira
-      orcid: 0000-0000-0000-0000
+      orcid: 0009-0001-3919-9331
       affiliation: 1
-    - name: Alexandre Martins Gama de Deus
-      orcid: 0000-0000-0000-0000
+    - name: Alexandre de Deus
+      orcid: 0000-0002-0229-7720 
       affiliation: 1
 affiliations:
     - name: Centro Federal de Educação Tecnológica de Minas Gerais, Brazil
